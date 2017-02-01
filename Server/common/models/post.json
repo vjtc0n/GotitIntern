@@ -1,0 +1,54 @@
+{
+  "name": "Post",
+  "plural": "Posts",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "postId": {
+      "type": "number",
+      "id": true,
+      "generated": true
+    },
+    "imgUrl": {
+      "type": "string",
+      "required" : true
+    },
+    "extension": {
+      "type": "string",
+      "required" : true
+    },
+    "size": {
+      "type": "number",
+      "required" : true
+    },
+    "caption": {
+      "type": "string",
+      "required" : true
+    },
+    "created_time": {
+      "type": "date",
+      "required" : true,
+      "default" : "$now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

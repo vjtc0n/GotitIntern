@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "Picuni",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "Picuni",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "Picuni",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "Picuni",
+    "public": true
+  },
+  "Member": {
+    "dataSource": "Picuni",
+    "public": true
+  },
+  "Container": {
+    "dataSource": "container",
+    "public": true
+  },
+  "accessToken": {
+    "dataSource": "Picuni",
+    "public": true
+  },
+  "Post": {
+    "dataSource": "Picuni",
+    "public": true
+  }
+}
