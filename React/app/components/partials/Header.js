@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Navbar, Nav, Col, Grid, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import * as API from '../../api/PostSearch'
+import * as API from '../../api/Backend'
 import FacebookLogin from 'react-facebook-login';
 
 export default class Header extends Component {

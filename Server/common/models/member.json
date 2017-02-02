@@ -9,11 +9,21 @@
     "userId": {
       "type": "number",
       "id": true,
-      "generated": false
+      "generated": false,
+      "required":false,
+      "mysql":
+      {
+        "columnName":"userId",
+        "dataType":"BIGINT",
+        "dataLength":20
+      }
     },
-    "lastname": {
+    "avatar_picture": {
       "type": "string"
-    }
+    },
+    "realm": false,
+    "emailVerified": false,
+    "verificationToken": false
   },
   "validations": [],
   "relations": {
@@ -40,6 +50,13 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "exists"
     }
   ],
   "methods": {}

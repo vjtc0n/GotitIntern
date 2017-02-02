@@ -32,6 +32,16 @@
       "type": "date",
       "required" : true,
       "default" : "$now"
+    },
+    "userId": {
+      "type": "number",
+      "length": 20,
+      "mysql":
+      {
+        "columnName":"userId",
+        "dataType":"BIGINT",
+        "dataLength":20
+      }
     }
   },
   "validations": [],

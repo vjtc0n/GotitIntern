@@ -1,4 +1,4 @@
-import photoSearch from '../../api/PostSearch';
+import photoSearch from '../../api/Backend';
 
 export const SEARCH_PENDING = 'SEARCH_PENDING';
 export const SEARCH_PENDING_FOR_NEXT = 'SEARCH_PENDING_FOR_TEXT';

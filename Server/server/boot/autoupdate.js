@@ -42,7 +42,7 @@ module.exports = function(app) {
 
 
     Member.create([
-      {username: 'Khanh', email: 'abc@g.co', password: 'luukhanhvi1@', userId: 10, lastname: "Pham"},
+      {username: 'Khanh', email: 'abc@g.co', password: 'luukhanhvi1@', userId: 1230367927053470, lastname: "Pham"},
       {username: 'Khanh', email: 'abc1@g.co', password: 'luukhanhvi1@', userId: 15},
       {username: 'Nhuan', email: 'abcd@g.com', password: '12345', userId: 19}
     ], function (err, users) {

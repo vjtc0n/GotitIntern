@@ -26,10 +26,10 @@ export  async function setFacebookTokenToServer(data) {
         })
 }
 
-export  async function saveProfileToServer(data, accessToken) {
+export  async function saveProfileToServer(userID, data, accessToken) {
     return await this._fetch({
-        method: 'PUT',
-        url: '/Members?access_token=' + accessToken,
+        method: 'PATCH',
+        url: '/Members/' + userID + '?access_token=' + accessToken,
         body: data
     })
         .then((res) => {
@@ -43,6 +43,42 @@ export  async function saveProfileToServer(data, accessToken) {
             throw (error)
         })
 }
+
+export  async function checkUserExist(id) {
+    return await this._fetch({
+        method: 'GET',
+        url: '/Members/' + id + '/exists'
+    })
+        .then((res) => {
+            if (res.status === 200 || res.status === 201) {
+                return res.json
+            } else {
+                throw (res.json)
+            }
+        })
+        .catch((error) => {
+            throw (error)
+        })
+}
+
+export  async function insertProfileToServer(data) {
+    return await this._fetch({
+        method: 'POST',
+        url: '/Members',
+        body: data
+    })
+        .then((res) => {
+            if (res.status === 200 || res.status === 201) {
+                return res.json
+            } else {
+                throw (res.json)
+            }
+        })
+        .catch((error) => {
+            throw (error)
+        })
+}
+
 
 export  async function getPosts(accessToken, limit) {
     return await this._fetch({

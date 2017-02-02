@@ -6,7 +6,18 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "userId": {
+      "type": "number",
+      "length": 20,
+      "mysql":
+      {
+        "columnName":"userId",
+        "dataType":"BIGINT",
+        "dataLength":20
+      }
+    }
+  },
   "validations": [],
   "relations": {
     "user": {
