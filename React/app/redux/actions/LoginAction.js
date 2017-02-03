@@ -17,6 +17,8 @@ export const INSERT_PROFILE_TO_SERVER_FAILURE = 'INSERT_PROFILE_TO_SERVER_FAILUR
 
 export const GET_PROFILE_FROM_STORAGE = 'GET_PROFILE_FROM_STORAGE';
 
+export const LOG_OUT = 'LOG_OUT'
+
 
 export function saveTokenToServerRequest () {
     return {
@@ -128,5 +130,11 @@ export function getProfileFromStorageSuccess (json) {
 export function getProfileFromStorage (data) {
     return dispatch => {
         dispatch(getProfileFromStorageSuccess(data))
+    }
+}
+
+export function logout() {
+    return {
+        type: LOG_OUT
     }
 }

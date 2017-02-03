@@ -17,24 +17,9 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            alreadyHaveAccount: false
+
         }
     }
-
-    componentWillMount() {
-        let localState = JSON.parse(localStorage.getItem('profile'));
-        if (localState != null) {
-            this.props.actions.getProfileFromStorage(localState)
-            this.setState({
-                alreadyHaveAccount: true
-            }, () => {
-                hashHistory.replace('/search')
-            })
-        } else {
-            hashHistory.replace('/login')
-        }
-    }
-
 
     responseFacebook = (response) => {
         console.log(response);
@@ -54,7 +39,7 @@ class Login extends Component {
                             }, response.accessToken)
                                 .then(() => {
                                     localStorage.setItem('profile', JSON.stringify(self.props.profile));
-                                    hashHistory.replace('/search')
+                                    hashHistory.replace('/main')
                                 })
                         } else {
                             this.props.actions.insertProfileToServer({
@@ -66,7 +51,7 @@ class Login extends Component {
                             })
                                 .then(() => {
                                     localStorage.setItem('profile', JSON.stringify(self.props.profile));
-                                    hashHistory.replace('/search')
+                                    hashHistory.replace('/main')
                                 })
                         }
                     })
@@ -74,30 +59,36 @@ class Login extends Component {
     };
 
     render() {
-        let facebookLogin = null;
-        if (this.state.alreadyHaveAccount == false) {
-            return (
-                <FacebookLogin
-                    cssClass="btn"
-                    textButton='Facebook'
-                    icon='fa-facebook'
-                    size='small'
-                    appId="253580248403665"
-                    autoLoad={true}
-                    fields="name,email,picture.width(200).height(200)"
-                    scope="public_profile,user_friends,user_actions.books"
-                    callback={this.responseFacebook}
-                />
-            )
+        let facebookLoading = <FacebookLogin
+                                cssClass="btn"
+                                textButton='Facebook'
+                                icon='fa-facebook'
+                                size='small'
+                                appId="253580248403665"
+                                autoLoad={true}
+                                fields="name,email,picture.width(200).height(200)"
+                                scope="public_profile,user_friends,user_actions.books"
+                                callback={this.responseFacebook}
+                            />
+        if (this.props.load.loading == true) {
+            return <div>Loading...</div>
         } else {
-            return (
-                <div>ABC</div>
-            )
+            facebookLoading = <FacebookLogin
+                                cssClass="btn"
+                                textButton='Facebook'
+                                icon='fa-facebook'
+                                size='small'
+                                appId="253580248403665"
+                                autoLoad={true}
+                                fields="name,email,picture.width(200).height(200)"
+                                scope="public_profile,user_friends,user_actions.books"
+                                callback={this.responseFacebook}
+                            />
         }
 
         return (
             <div>
-                {facebookLogin}
+                {facebookLoading}
             </div>
         )
     }
@@ -105,7 +96,8 @@ class Login extends Component {
 
 function mapStateToProps(state) {
     return {
-        profile: state.profile
+        profile: state.profile,
+        load: state.asyncInitialState
     };
 }
 

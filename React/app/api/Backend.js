@@ -83,10 +83,28 @@ export  async function insertProfileToServer(data) {
 export  async function getPosts(accessToken, limit) {
     return await this._fetch({
         method: 'GET',
-        url: '/Posts' + '&limit=' + limit +'&filter[order]=created_time%20DESC?access_token=' + accessToken
+        url: '/Posts' + '?filter[limit]=' + limit +'&filter[order]=created_time%20DESC&filter[include]=user'
     })
         .then((res) => {
             if (res.status === 200 || res.status === 201) {
+                return res.json
+            } else {
+                throw (res.json)
+            }
+        })
+        .catch((error) => {
+            throw (error)
+        })
+}
+
+export  async function logout(accessToken) {
+    return await this._fetch({
+        method: 'POST',
+        url: '/Members/logout?access_token=' + accessToken
+    })
+        .then(() => {
+            console.log(res.status)
+            if (res.status === 200 || res.status === 201 || res.status === 204) {
                 return res.json
             } else {
                 throw (res.json)
@@ -126,13 +144,13 @@ export async function _fetch (opts) {
 
     let response = await fetch(url, reqOpts);
 
-
     res.status = response.status;
     res.code = response.code;
 
     return response.json()
         .then((json) => {
             res.json = json;
+            console.log(res)
             return res
         })
 }

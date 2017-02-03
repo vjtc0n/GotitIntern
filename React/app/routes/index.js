@@ -5,10 +5,12 @@ import { UserIsAuthenticated} from './AuthenticationRouter'
 
 // Import components
 import AppMaster from '../views/AppMaster';
-import SearchAppContainer from '../redux/containers/SearchAppContainer';
+import MainContainer from '../redux/containers/MainContainer';
 import UploadPictureContainer from '../redux/containers/UploadPictureContainer'
 import Login from '../redux/containers/Login'
 import NotFoundContainer from '../redux/containers/NotFoundContainer'
+import GlobalFeedContainer from '../redux/containers/GlobalFeedContainer'
+import DetailPostContainer from '../redux/containers/DetailPostContainer'
 
 const Authenticated = UserIsAuthenticated((props) => props.children);
 
@@ -38,9 +40,12 @@ export default (store) => {
             <Route
                 onEnter={connect(onEnterChain(UserIsAuthenticated.onEnter))}
                 component={Authenticated}>
-                <Route path="/search(/:search)" component={SearchAppContainer}/>
+                <Route path="/main" component={MainContainer}>
+                    <IndexRoute component={GlobalFeedContainer}/>
+                    <Route path="post/:postId" component={DetailPostContainer}/>
+                    <Route path="/upload" component={UploadPictureContainer}/>
+                </Route>
             </Route>
-            <Route path="/upload" component={UploadPictureContainer}/>
             <Route path='/404' component={NotFoundContainer} />
             <Redirect from='*' to='/404' />
         </Route>

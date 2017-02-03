@@ -21,19 +21,25 @@ module.exports = function(app) {
   }
 
   function autoMigrateAll(){
+    var dataLength = Object.keys(models).length;
+    var i = 0;
     Object.keys(models).forEach(function(key) {
       if (typeof models[key].dataSource != 'undefined') {
         if (typeof datasources[models[key].dataSource] != 'undefined') {
           app.dataSources[models[key].dataSource].automigrate(key, function (err) {
             if (err) throw err;
             console.log('Model ' + key + ' migrated');
+            i = i + 1;
+            if (i == (dataLength - 1)) {
+              createInstances()
+            }
           });
         }
       }
     });
   }
   //TODO: change to autoUpdateAll when ready for CI deployment to production
-  //autoMigrateAll();
+  autoMigrateAll();
   //autoUpdateAll();
   function createInstances() {
     var Member = app.models.Member;
@@ -60,12 +66,96 @@ module.exports = function(app) {
           caption: "ABCDEF",
           size: 3,
           imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+        },
+        {
+          extension: "img",
+          caption: "ABCDEF",
+          size: 3,
+          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
         }
       ], function (err, posts) {
         if (err) throw err;
       });
 
       users[1].posts.create([
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
+        {
+          extension: "img",
+          caption: "123456",
+          size: 4,
+          imgUrl: "http://www.studyitalian.it/images/test.jpg"
+        },
         {
           extension: "img",
           caption: "123456",
@@ -126,6 +216,5 @@ module.exports = function(app) {
     Role.hasMany(Member, {through: RoleMapping, foreignKey: 'roleId'});
   }
 
-  //createInstances();
 
 };

@@ -154,3 +154,44 @@ div.form-group > input.form-control.input-lg:focus
         transform: rotate(360deg);
     }
 }
+
+#menu-button
+{
+    top: 55px;
+    left: 30px;
+    position: fixed;
+}
+
+.navbar-default .navbar-brand
+{
+    color: blueviolet;
+    float: right;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+}
+
+.side-menu
+{
+    margin-top: 55px;
+    background-color: white;
+    width: 30%;
+}
+
+.upload-container
+{
+    margin-top: 60px;
+}
+
+.loading
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.detail-post
+{
+    margin-top: 60px;
+}

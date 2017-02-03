@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux'
 import {hashHistory} from 'react-router';
+import * as asyncInitialState from 'redux-async-initial-state';
 
 const loggerMiddleware = createLogger();
 const routingMiddleware = routerMiddleware(hashHistory)
@@ -13,9 +14,62 @@ const routingMiddleware = routerMiddleware(hashHistory)
  */
 import rootReducer from '../reducers/index';
 
+const loadStore = (currentState) => {
+    var localState = JSON.parse(localStorage.getItem('profile'));
+    console.log(localState)
+    if (localState != null) {
+        return new Promise(resolve => {
+            fetch('https://graph.facebook.com/app?access_token=' + localState.accessToken.id)
+                .then(response => response.json())
+                .then(json => {
+                    if (typeof json.error == 'undefined'){
+                        resolve({
+                            ...currentState,
+                            profile: localState
+                        })
+                    } else {
+                        resolve({
+                            ...currentState,
+                            profile: {
+                                accessToken: {
+                                    id: '',
+                                    ttl: 0,
+                                    userId: ''
+                                },
+                                user: {
+                                    username: '',
+                                    email: '',
+                                    userId: ''
+                                },
+                                error: ''
+                            }
+                        })
+                    }
+                });
+        });
+    } else {
+        resolve({
+            ...currentState,
+            profile: {
+                accessToken: {
+                    id: '',
+                    ttl: 0,
+                    userId: ''
+                },
+                user: {
+                    username: '',
+                    email: '',
+                    userId: ''
+                },
+                error: ''
+            }
+        })
+    }
+}
+
 export default function configureStore(initialState) {
     const enhancer = compose(
-        applyMiddleware(thunkMiddleware, loggerMiddleware, routingMiddleware),
+        applyMiddleware(thunkMiddleware, loggerMiddleware, routingMiddleware, asyncInitialState.middleware(loadStore)),
         devTools(),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     );

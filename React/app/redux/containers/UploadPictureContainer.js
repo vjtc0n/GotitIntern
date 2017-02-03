@@ -4,9 +4,11 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {searchPhotoAction, searchNextPageAction} from '../actions/SearchActions';
+import {searchPhotoAction, searchNextPageAction} from '../actions/PostActions';
 import Dropzone from 'react-dropzone'
 import { Line, Circle } from 'rc-progress';
+import * as config from '../../api/config'
+var baseUrl = config.baseUrl;
 
 class UploadPictureContainer extends Component {
     constructor(props) {
@@ -26,7 +28,7 @@ class UploadPictureContainer extends Component {
     }
 
     onOpenClick() {
-        let URL = 'http://192.168.1.73:3000/api/containers/container1/upload?access_token=123'
+        let URL = baseUrl + '/containers/container1/upload?access_token=123'
         //let URL = 'https://posttestserver.com/post.php'
         this.setState({
             isProgressBarShown: true
@@ -68,7 +70,7 @@ class UploadPictureContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="upload-container">
                 <div>{this.state.progress}</div>
                 <div style={{display: this.state.isProgressBarShown ? 'block' : 'none' }}>
                     <Line percent={this.state.progress} strokeWidth="3" strokeColor="#4286f4" />
@@ -95,24 +97,13 @@ class UploadPictureContainer extends Component {
     }
 }
 
-UploadPictureContainer.propTypes = {
-    status: PropTypes.string.isRequired,
-    photos: PropTypes.array,
-    page: PropTypes.number
-}
 
 const mapStateToProps = (state, ownProps) =>
 {
     return {
-        photos: state.photos.photos,
-        status: state.photos.status,
-        page: state.photos.page,
-        search: ownProps.params.search
+        profile: state.profile
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({searchPhotoAction, searchNextPageAction}, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UploadPictureContainer)
+export default connect(mapStateToProps)(UploadPictureContainer)

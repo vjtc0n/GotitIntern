@@ -12,11 +12,12 @@ import
     INSERT_PROFILE_TO_SERVER_REQUEST,
     INSERT_PROFILE_TO_SERVER_SUCCESS,
     INSERT_PROFILE_TO_SERVER_FAILURE,
-    GET_PROFILE_FROM_STORAGE
+    GET_PROFILE_FROM_STORAGE,
+    LOG_OUT
 }
     from '../actions/LoginAction';
 
-const initalState = {
+var initalState = {
     accessToken: {
         id: '',
         ttl: 0,
@@ -79,6 +80,13 @@ export default function profileReducer(state = initalState, action) {
                 ...state,
                 user: action.payload.user,
                 accessToken: action.payload.accessToken
+            };
+        case LOG_OUT:
+            return {
+                ...state,
+                accessToken: {},
+                user: {},
+                error: ''
             };
         default:
             return state;
