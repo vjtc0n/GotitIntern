@@ -79,19 +79,44 @@ class GlobalFeedContainer extends Component {
                     textAlign: 'center'
                 }}>
                 <div>
-                    <div className="row">
+                    <div>
                         {
                             this.state.posts.map((item, index)=> {
                                 return (
-                                    <div
-                                        onClick={(event) => this.onPostPress(item, event)}
-                                        className="col-md-3 image-item"
-                                        key={`PhotoItem_${item.id}_${index}`}>
-                                        <img src={item.user.avatar_picture} alt=""/>
-                                        <div>{item.user.username}</div>
-                                        <div>{item.caption}</div>
-                                        <img src={item.imgUrl} alt=""/>
+                                <main
+                                    key={`PhotoItem_${item.id}_${index}`}
+                                    className="mdl-layout__content">
+                                    <div className="mdl-cell mdl-cell--6-col center_row">
+                                        <div
+                                            onClick={(event) => this.onPostPress(item, event)}
+                                            className="mdl-card imaged mdl-shadow--2dp card_block">
+                                            <div className="mdl-card__supporting-text mdl-color-text--grey-600 ">
+                                                <div className="minilogo users">
+                                                    <img src={item.user.avatar_picture} alt=""/>
+                                                </div>
+                                                <div className="card-author">
+                                                    <span><strong>{item.user.username}</strong></span>
+                                                    <span>6 days ago</span>
+                                                </div>
+                                            </div>
+                                            <div className="mdl-card__title">
+                                                <a>
+                                                    <img src={item.imgUrl} alt=""/>
+                                                </a>
+                                            </div>
+                                            <div className="mdl-card__supporting-text mdl-color-text--grey-600">
+                                                <i className="mdl-icon-toggle__label material-icons">favorite</i>
+                                                <i className="mdl-icon-toggle__label material-icons">comment-outline</i>
+                                                <i className="mdl-icon-toggle__label material-icons">share</i>
+                                            </div>
+
+                                            <div className="mdl-card__supporting-text mdl-color-text--grey-600">
+                                                {item.caption}
+                                            </div>
+                                        </div>
                                     </div>
+                                </main>
+
                                 )
                             })
                         }

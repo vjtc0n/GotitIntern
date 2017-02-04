@@ -47,23 +47,6 @@ const loadStore = (currentState) => {
                     }
                 });
         });
-    } else {
-        resolve({
-            ...currentState,
-            profile: {
-                accessToken: {
-                    id: '',
-                    ttl: 0,
-                    userId: ''
-                },
-                user: {
-                    username: '',
-                    email: '',
-                    userId: ''
-                },
-                error: ''
-            }
-        })
     }
 }
 

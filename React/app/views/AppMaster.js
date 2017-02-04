@@ -6,7 +6,7 @@ export default class AppMaster extends Component{
     render(){
         //console.log(this.props.children)
         return (
-            <div>
+            <div className="animsition">
                 <div>
                     {this.props.children}
                 </div>

@@ -10,7 +10,7 @@ export default class Header extends Component {
             <Navbar fixedTop>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#">Picuni</a>
+                        <a href="#/main">Picuni</a>
                     </Navbar.Brand>
                 </Navbar.Header>
             </Navbar>

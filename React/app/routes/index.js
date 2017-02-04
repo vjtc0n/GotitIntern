@@ -41,7 +41,7 @@ export default (store) => {
             <Route
                 onEnter={connect(onEnterChain(UserIsAuthenticated.onEnter))}
                 component={Authenticated}>
-                <Route path="/main" component={MainContainer}>
+                <Route path="/main" component={withTransition(MainContainer)}>
                     <IndexRoute component={GlobalFeedContainer}/>
                     <Route path="post/:postId" component={DetailPostContainer}/>
                     <Route path="/upload" component={UploadPictureContainer}/>

@@ -43,17 +43,45 @@ class DetailPostContainer extends Component {
     render() {
         console.log(this.state.post.user.avatar_picture)
         return (
-            <div className="detail-post">
-                <button onClick={(event) => this.onBackPress(event)}>
+            <main className="mdl-layout__content" style={{marginTop: 100}}>
+                <button id="button-back" onClick={(event) => this.onBackPress(event)}>
                     <FontAwesome name='angle-left' size="2x" />
                 </button>
-                <img src={this.state.post.user.avatar_picture} alt=""/>
-                <div>{this.state.post.user.username}</div>
-                <div>{this.state.post.caption}</div>
-                <img src={this.state.post.imgUrl} alt=""/>
-                <div>{this.state.post.extension}</div>
-                <div>{this.state.post.size + ' MB'}</div>
-            </div>
+                <div className="mdl-cell mdl-cell--6-col center_row">
+                    <div className="mdl-card imaged mdl-shadow--2dp card_block">
+                        <div className="mdl-card__supporting-text mdl-color-text--grey-600 ">
+                            <div className="minilogo users">
+                                <img src={this.state.post.user.avatar_picture} alt=""/>
+                            </div>
+                            <div className="card-author">
+                                <span><strong>{this.state.post.user.username}</strong></span>
+                                <span>6 days ago</span>
+                            </div>
+                        </div>
+                        <div className="mdl-card__title">
+                            <a href="article.html">
+                                <img src={this.state.post.imgUrl} alt=""/>
+                            </a>
+                        </div>
+                        <div className="mdl-card__supporting-text mdl-color-text--grey-600">
+                            <i className="mdl-icon-toggle__label material-icons">favorite</i>
+                            <i className="mdl-icon-toggle__label material-icons">comment-outline</i>
+                            <i className="mdl-icon-toggle__label material-icons">share</i>
+                        </div>
+
+                        <div className="mdl-card__supporting-text mdl-color-text--grey-600">
+                            {this.state.post.caption}
+                        </div>
+                        <div className="mdl-card__supporting-text mdl-color-text--grey-600">
+                            <span
+                                aria-hidden="true"
+                                style={{marginRight: 10}}
+                                className="fa fa-file-o fa-2x"><span className="detail-text">{this.state.post.extension}</span></span>
+                            <span aria-hidden="true" className="fa fa-archive fa-2x"><span className="detail-text">{this.state.post.size + 'MB'}</span></span>
+                        </div>
+                    </div>
+                </div>
+            </main>
         )
     }
 }

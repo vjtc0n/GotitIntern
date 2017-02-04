@@ -108,39 +108,45 @@ class UploadPictureContainer extends Component {
     render() {
         let error = null;
         if (this.state.error != null) {
-            error = <div>You must provide at least 3 characters</div>
+            error = <div style={{color: "red"}}>You must provide at least 3 characters</div>
+        }
+
+        let imageInsideDropZone = null
+        if (this.state.files.length > 0) {
+            imageInsideDropZone = <div>{this.state.files.map((file, index) => <img key={index} src={file.preview} /> )}</div>
+        } else {
+            imageInsideDropZone = <div>
+                <div><img className="img_dropzone" src="http://d13yacurqjgara.cloudfront.net/users/3463/screenshots/1348939/direct_icon.png" /></div>
+                <div className="des_drop_zone">Try dropping some files here, or click to select files to upload.</div>
+            </div>
         }
         return (
             <div className="upload-container">
                 <textarea
                     type="text" ref="keyword"
-                    className="form-control input-lg"
+                    className="form-control input-lg text_description"
                     placeholder="What do you think?"
                     onChange={(event) => this.handleChange(event)}
                     defaultValue={this.state.caption}/>
                 {error}
-                <div>{this.state.progress}</div>
                 <div style={{display: this.state.isProgressBarShown ? 'block' : 'none' }}>
                     <Line percent={this.state.progress} strokeWidth="3" strokeColor="#4286f4" />
                 </div>
                 <Dropzone
+                    className="drop_zone"
                     ref={(node) => { this.dropzone = node }}
                     onDrop={(acceptedFiles) => this.onDrop(acceptedFiles)}>
-                    <div>Try dropping some files here, or click to select files to upload.</div>
+                    {imageInsideDropZone}
                 </Dropzone>
-                <button
-                    disabled={this.state.disableUploadButton}
-                    type="button"
-                    onClick={() => this.onOpenClick()}>
-                    Upload
-                </button>
-                {
-                    this.state.files.length > 0 ?
-                    <div>
-                        <h2>Uploading {this.state.files.length} files...</h2>
-                        <div>{this.state.files.map((file, index) => <img key={index} src={file.preview} /> )}</div>
-                    </div> : null
-                }
+                <div className="row upload_btn">
+                    <div className="col-md-12">
+                        <button disabled={this.state.disableUploadButton}
+                                onClick={() => this.onOpenClick()} type="button"
+                                className="btn btn-default btn-lg btn-block">
+                            Upload
+                        </button>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -60,14 +60,34 @@ class MainContainer extends Component {
     }
 
     render() {
-        let sidebarContent = <div className="col-lg-8">
-                                <b>Sidebar content</b>
-                                <div><a href="#/main">GlobalFeed</a></div>
-                                <div><a href="#/upload">Upload</a></div>
-                                <div className="log-out">
-                                    <button onClick={() => this.logout(this.props.profile.accessToken.id)}>Logout</button>
-                                </div>
-                            </div>;
+        let sidebarContent = <div className="">
+                    <div className="mdl-card mdl-shadow--2dp mdl-color--primary mdl-color-text--blue-grey-50 drawer-profile">
+                        <div className="mdl-card__title user users">
+                            <img src={this.props.profile.user.avatar_picture} alt=""/>
+                            <span className="user-name">{this.props.profile.user.username}</span>
+                            <span className="user-mail">{this.props.profile.user.email}</span>
+                        </div>
+                    </div>
+                    <div className="mdl-layout__drawer">
+                        <nav className="mdl-navigation ">
+                        <a className="mdl-navigation__link animsition-link" href="#/main">
+                            <FontAwesome name='home' size="2x" /><span className="menu-text">GlobalFeed</span>
+                        </a>
+                        <a className="mdl-navigation__link animsition-link" href="#/upload">
+                            <FontAwesome name='upload' size="2x" /><span className="menu-text">Upload</span>
+                        </a>
+                        <div className="drawer-separator"></div>
+                        <div className="mdl-collapse">
+                            <a
+                                onClick={() => this.logout(this.props.profile.accessToken.id)}
+                                className="mdl-navigation__link mdl-collapse__button">
+                                <FontAwesome name='mail-reply' size="2x" />
+                                <span className="menu-text">Logout</span>
+                            </a>
+                        </div>
+                    </nav>
+                    </div>
+                </div>;
         return (
             <Sidebar
                 sidebarClassName="side-menu"

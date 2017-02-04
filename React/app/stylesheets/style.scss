@@ -157,9 +157,10 @@ div.form-group > input.form-control.input-lg:focus
 
 #menu-button
 {
-    top: 55px;
+    top: 5px;
     left: 30px;
     position: fixed;
+    z-index: 9999;
 }
 
 .navbar-default .navbar-brand
@@ -173,11 +174,33 @@ div.form-group > input.form-control.input-lg:focus
     font-size: large;
 }
 
+#button-back
+{
+    z-index: 9999999;
+    background: transparent;
+    position: fixed;
+    left: 130px;
+    top: 9;
+    border: none;
+
+}
+.text_description{
+    border-radius: 0px !important;
+}
+#button-back span{
+    color: #5e5e5e !important;
+}
+
 .side-menu
 {
     margin-top: 55px;
     background-color: white;
-    width: 30%;
+    z-index: 99999;
+    overflow-y: hidden !important;
+}
+
+.side-content{
+    z-index: 9999999;
 }
 
 .upload-container
@@ -195,3 +218,230 @@ div.form-group > input.form-control.input-lg:focus
 {
     margin-top: 60px;
 }
+.wrapper_container{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 30px auto 0;
+    max-width: 935px;
+    width: 100%;
+}
+.container_inner{
+    background-repeat: no-repeat;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    background-image: url(//instagramstatic-a.akamaihd.net/h1/images/homepage/home-phones.png/38825c9d5aa2.png);
+    background-position: 0 0;
+    background-size: 454px 618px;
+    -ms-flex-preferred-size: 454px;
+    flex-basis: 454px;
+    height: 618px;
+    margin-left: -35px;
+    margin-right: -15px;
+}
+.content_text{
+    margin: 99px 0 0 151px;
+    position: relative;
+}
+.content_img{
+    height: 427px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    width: 240px;
+}
+.container_right {
+    color: #262626;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+    max-width: 350px;
+}
+nav{
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+._du7bh {
+    margin: 22px auto 8px;
+}
+._6jtqn {
+    margin: 15px auto;
+    min-width: 120px;
+}
+._hvnxx ._frcv2 {
+    padding: 0 24px;
+    line-height: 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #3897f0;
+    border-color: #3897f0;
+    color: #fff;
+}
+._nvyyp {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}
+.facebook-login{
+    padding: 0 24px;
+    line-height: 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #3897f0;
+    border-color: #3897f0;
+    color: #fff;
+}
+._m8ogu {
+    margin-top: 10px;
+}
+._gnsgq {
+    color: #262626;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 10px 20px;
+    text-align: center;
+}
+._rwl8x {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+ul {
+    list-style: none;
+}
+._oofbn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    -webkit-box-ordinal-group: 5;
+    -ms-flex-order: 4;
+    order: 4;
+    padding: 0 20px;
+}
+._p1gbi {
+    width: 100%;
+}
+._fw3ds {
+    display: inline-block;
+    margin-bottom: 7px;
+    margin-right: 16px;
+}
+._mhrsk {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: uppercase;
+    width: 100%;
+}
+._okmo7 {
+    margin-right: 8px;
+}
+._t5w1b {
+    height: 40px;
+}
+._mhrsk {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: uppercase;
+    width: 100%;
+}
+._fh0f2{
+    margin: 0 auto;
+}
+@media only screen and (max-width: 420px) {
+    ._3mng4{
+        display: none !important;
+    }
+}
+@media (min-width: 876px) {
+    ._pcuq6 {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 38px 0;
+    }
+    ._pcuq6 ._p1gbi {
+        max-width: 100%;
+    }
+}
+
+.drop_zone {
+    width: 100%;
+    text-align: center;
+    min-height: 200px;
+    border-width: 2px;
+    border-color: rgb(102, 102, 102);
+    border-style: dashed;
+    border-radius: 5px;
+}
+.img_dropzone{
+    content: "";
+    width: 60px;
+    height: 60px;
+    margin-top: 43px;
+    margin-left: -40px;
+    border-radius: 100%;
+    background-position: -10px;
+    background-size: cover;
+    background-image: url("http://d13yacurqjgara.cloudfront.net/users/3463/screenshots/1348939/direct_icon.png");
+}
+.des_drop_zone{
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+}
+.upload_btn button{
+    width: 100%;
+    background: #ccc;
+}
+
+.menu-text{
+    margin-left: 30%;
+}
+
+.detail-text{
+    margin-left: 5%;
+}
+
