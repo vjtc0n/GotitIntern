@@ -3,11 +3,6 @@ import _ from 'underscore';
 import * as config from './config'
 var baseUrl = config.baseUrl;
 
-export default function photoSearch(keyword, page, callback){
-    return fetch(`https://api.500px.com/v1/photos/search?term=${keyword}&page=${page}&rpp=20&image_size=440&sort=highest_rating&consumer_key=sPvXEpW2sFrch65rpyZQf01lBHuRGkEDDROTG1r4`)
-        .then(response => response.json())
-}
-
 export  async function setFacebookTokenToServer(data) {
     return await this._fetch({
         method: 'POST',
@@ -97,14 +92,31 @@ export  async function getPosts(accessToken, limit) {
         })
 }
 
-export  async function logout(accessToken) {
+export  async function getDetailPost(postId) {
+    return await this._fetch({
+        method: 'GET',
+        url: '/Posts/' + postId + '?filter[include]=user'
+    })
+        .then((res) => {
+            if (res.status === 200 || res.status === 201) {
+                return res.json
+            } else {
+                throw (res.json)
+            }
+        })
+        .catch((error) => {
+            throw (error)
+        })
+}
+
+export  async function savePost(data, accessToken) {
     return await this._fetch({
         method: 'POST',
-        url: '/Members/logout?access_token=' + accessToken
+        url: '/Posts?access_token=' + accessToken,
+        body: data
     })
-        .then(() => {
-            console.log(res.status)
-            if (res.status === 200 || res.status === 201 || res.status === 204) {
+        .then((res) => {
+            if (res.status === 200 || res.status === 201) {
                 return res.json
             } else {
                 throw (res.json)

@@ -2,6 +2,30 @@
  * Created by vjtc0n on 2/1/17.
  */
 var faker = require('faker');
+
+
+var posts1 = [];
+var posts2 =[];
+
+for (var i = 0; i < 20; i++) {
+  posts1.push({
+    extension: "img",
+    caption: "ABCDEF",
+    size: 3,
+    imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+  })
+}
+
+for (var i = 0; i < 20; i++) {
+  posts2.push({
+    extension: "img",
+    caption: "ABCDEF",
+    size: 3,
+    imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+  })
+}
+
+
 module.exports = function(app) {
   var path = require('path');
   var models = require(path.resolve(__dirname, '../model-config.json'));
@@ -48,127 +72,17 @@ module.exports = function(app) {
 
 
     Member.create([
-      {username: 'Khanh', email: 'abc@g.co', password: 'luukhanhvi1@', userId: 1230367927053470, lastname: "Pham"},
-      {username: 'Khanh', email: 'abc1@g.co', password: 'luukhanhvi1@', userId: 15},
-      {username: 'Nhuan', email: 'abcd@g.com', password: '12345', userId: 19}
+      {username: 'Khanh', email: 'abc@g.co', password: 'luukhanhvi1@', userId: 1230367927053470, avatar_picture: "https://upload.wikimedia.org/wikipedia/commons/0/07/Avatar_girl_face.png"},
+      {username: 'Khanh', email: 'abc1@g.co', password: 'luukhanhvi1@', userId: 15, avatar_picture: "https://upload.wikimedia.org/wikipedia/commons/0/07/Avatar_girl_face.png"},
+      {username: 'Nhuan', email: 'abcd@g.com', password: '12345', userId: 19, avatar_picture: "https://upload.wikimedia.org/wikipedia/commons/0/07/Avatar_girl_face.png"}
     ], function (err, users) {
       if (err) throw err;
 
-      users[0].posts.create([
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        },
-        {
-          extension: "img",
-          caption: "ABCDEF",
-          size: 3,
-          imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
-        }
-      ], function (err, posts) {
+      users[0].posts.create(posts1, function (err, posts) {
         if (err) throw err;
       });
 
-      users[1].posts.create([
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        },
-        {
-          extension: "img",
-          caption: "123456",
-          size: 4,
-          imgUrl: "http://www.studyitalian.it/images/test.jpg"
-        }
-      ], function (err, posts) {
+      users[1].posts.create(posts2, function (err, posts) {
         if (err) throw err;
       });
 

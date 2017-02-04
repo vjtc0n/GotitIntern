@@ -48,9 +48,25 @@ class GlobalFeedContainer extends Component {
         })
     }
 
-    onPostPress(item) {
+    onPostPress(item, event) {
+        event.preventDefault();
         console.log(item)
-        hashHistory.push('/main/post/' + item.postId)
+        //hashHistory.push('/main/post/' + item.postId)
+        this.context.transitionRouter.show({
+            pathname: '/main/post/' + item.postId,
+            state: {
+                showTransition: {
+                    transitionName: 'show-from-top',
+                    transitionEnterTimeout: 500,
+                    transitionLeaveTimeout: 300,
+                },
+                dismissTransition: {
+                    transitionName: 'dismiss-from-top',
+                    transitionEnterTimeout: 500,
+                    transitionLeaveTimeout: 300,
+                },
+            },
+        });
     }
 
     render() {
@@ -67,9 +83,12 @@ class GlobalFeedContainer extends Component {
                             this.state.posts.map((item, index)=> {
                                 return (
                                     <div
-                                        onClick={() => this.onPostPress(item)}
+                                        onClick={(event) => this.onPostPress(item, event)}
                                         className="col-md-3 image-item"
                                         key={`PhotoItem_${item.id}_${index}`}>
+                                        <img src={item.user.avatar_picture} alt=""/>
+                                        <div>{item.user.username}</div>
+                                        <div>{item.caption}</div>
                                         <img src={item.imgUrl} alt=""/>
                                     </div>
                                 )
@@ -97,6 +116,10 @@ class GlobalFeedContainer extends Component {
         )
     }
 }
+
+GlobalFeedContainer.contextTypes = {
+    transitionRouter: React.PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
     return {

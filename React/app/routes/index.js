@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {Router, Route, IndexRoute, IndexRedirect, Redirect} from 'react-router';
 import { UserIsAuthenticated} from './AuthenticationRouter'
+import {useTransitions, withTransition} from 'react-router-transitions';
 
 // Import components
 import AppMaster from '../views/AppMaster';
@@ -34,7 +35,7 @@ export default (store) => {
     };
 
     return (
-        <Route path="/" component={AppMaster}>
+        <Route path="/" component={withTransition(AppMaster)}>
             <IndexRoute component={Login}/>
             <Route path="/login" component={Login}/>
             <Route
