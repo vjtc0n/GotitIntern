@@ -21,8 +21,14 @@
       "required" : true
     },
     "size": {
-      "type": "number",
-      "required" : true
+      "type": "string",
+      "required" : true,
+      "mysql":
+      {
+        "columnName":"size",
+        "dataType":"VARCHAR",
+        "dataLength": 10
+      }
     },
     "caption": {
       "type": "string",

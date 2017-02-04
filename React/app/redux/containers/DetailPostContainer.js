@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import * as PostActions from '../actions/PostActions';
+import FontAwesome from 'react-fontawesome'
 
 class DetailPostContainer extends Component {
     constructor(props) {
@@ -34,20 +35,32 @@ class DetailPostContainer extends Component {
             })
     }
 
+    onBackPress(event) {
+        event.preventDefault();
+        this.context.router.goBack()
+    }
+
     render() {
         console.log(this.state.post.user.avatar_picture)
         return (
             <div className="detail-post">
+                <button onClick={(event) => this.onBackPress(event)}>
+                    <FontAwesome name='angle-left' size="2x" />
+                </button>
                 <img src={this.state.post.user.avatar_picture} alt=""/>
                 <div>{this.state.post.user.username}</div>
                 <div>{this.state.post.caption}</div>
                 <img src={this.state.post.imgUrl} alt=""/>
                 <div>{this.state.post.extension}</div>
-                <div>{this.state.post.size + 'MB'}</div>
+                <div>{this.state.post.size + ' MB'}</div>
             </div>
         )
     }
 }
+
+DetailPostContainer.contextTypes = {
+    router: React.PropTypes.func.isRequired
+};
 
 function mapStateToProps(state, ownProps) {
     return {

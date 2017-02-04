@@ -28,7 +28,8 @@ class GlobalFeedContainer extends Component {
         this.props.actions.getPost(this.props.profile.accessToken.id, limit)
             .then(() => {
                 this.setState({
-                    posts: this.props.post.posts
+                    posts: this.props.post.posts,
+                    limit: this.state.limit + 10
                 })
             })
     }
@@ -100,7 +101,7 @@ class GlobalFeedContainer extends Component {
                     {this.props.post.status == 'DONE' &&
                     <div style={{marginBottom: '20px'}} className="row">
                         <div className="col-md-6 col-md-offset-3">
-                            <button onClick={this.getFeed.bind(this, 20)} type="button"
+                            <button onClick={this.getFeed.bind(this, this.state.limit)} type="button"
                                     className="btn btn-default btn-lg btn-block">
                                 Load more
                             </button>

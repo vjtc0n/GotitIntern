@@ -62,13 +62,13 @@ class UploadPictureContainer extends Component {
                 if (xhr.readyState == 4) {
                     console.log(xhr.responseText);
                     self.refs.keyword.value=""
-                    console.log(self.props)
+                    console.log((self.state.files[0].size)/(1024*1024).toString())
                     self.props.actions.savePost({
                         userId: self.props.profile.user.userId,
                         extension: self.state.files[0].type,
                         caption: self.state.caption,
                         imgUrl: baseUrl + '/containers/container1/download/' + self.state.files[0].name,
-                        size: Math.round((self.state.files[0].size)/(1024*1024)).toFixed(2)
+                        size: (self.state.files[0].size)/(1024*1024).toString()
                     }, self.props.profile.accessToken.id)
                         .then(() => {
                             self.setState({
