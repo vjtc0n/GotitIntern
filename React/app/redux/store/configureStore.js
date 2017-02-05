@@ -14,6 +14,14 @@ const routingMiddleware = routerMiddleware(hashHistory)
  */
 import rootReducer from '../reducers/index';
 
+/*
+*
+* Trying to load old data from LocalStorage
+* If the old accessToken's still valid from Facebook, keep using it
+* If not, get new accessToken from Facebook
+*
+* */
+
 const loadStore = (currentState) => {
     var localState = JSON.parse(localStorage.getItem('profile'));
     console.log(localState)
@@ -47,12 +55,20 @@ const loadStore = (currentState) => {
                     }
                 });
         });
+    } else {
+        return currentState
     }
 }
 
+/*
+*
+* Loading the Redux Store
+*
+* */
+
 export default function configureStore(initialState) {
     const enhancer = compose(
-        applyMiddleware(thunkMiddleware, loggerMiddleware, routingMiddleware, asyncInitialState.middleware(loadStore)),
+        applyMiddleware(thunkMiddleware, loggerMiddleware, routingMiddleware),
         devTools(),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     );

@@ -25,6 +25,12 @@ class DetailPostContainer extends Component {
         }
     }
 
+    /*
+    *
+    * Loading new data of detail of a post in the first render
+    *
+    * */
+
     componentDidMount() {
         console.log(this.props.postId)
         this.props.actions.getDetailPost(this.props.postId)
@@ -34,6 +40,10 @@ class DetailPostContainer extends Component {
                 })
             })
     }
+
+    /*
+    * Back to GlobalFeed
+    * */
 
     onBackPress(event) {
         event.preventDefault();

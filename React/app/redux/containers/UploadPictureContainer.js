@@ -25,6 +25,10 @@ class UploadPictureContainer extends Component {
         }
     }
 
+    /*
+    * Handle dropzone event
+    * */
+
     onDrop(acceptedFiles) {
         console.log(acceptedFiles)
         this.setState({
@@ -32,7 +36,12 @@ class UploadPictureContainer extends Component {
         });
     }
 
-    onOpenClick() {
+    /*
+    * Handle press event of upload button
+    * After successfully upload an image, save post's information to Loopback server
+    * */
+
+    onUploadClick() {
         let URL = baseUrl + '/containers/container1/upload?access_token=' + this.props.profile.accessToken.id
         //let URL = 'https://posttestserver.com/post.php'
         this.setState({
@@ -87,6 +96,50 @@ class UploadPictureContainer extends Component {
         });
     }
 
+    onUploadTestClick() {
+        let URL = 'https://posttestserver.com/post.php'
+        this.setState({
+            isProgressBarShown: true
+        })
+        return new Promise((resolve, reject) => {
+            let imageFormData = new FormData();
+
+            imageFormData.append('imageFile', this.state.files[0]);
+            let self = this;
+            let xhr = new XMLHttpRequest();
+
+            xhr.open('post', URL, true);
+            xhr.upload.onprogress = function(e) {
+                let progress = 0;
+                //console.log(e)
+                if (e.total !== 0) {
+                    progress = parseInt(e.loaded / e.total * 100, 10);
+                    //console.log(progress)
+                    self.setState({
+                        progress: progress
+                    })
+                }
+            };
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    console.log(xhr.responseText);
+                    self.refs.keyword.value=""
+                    self.setState({
+                        isProgressBarShown: false,
+                        progress: 0,
+                        files: [],
+                        caption: null,
+                        disableUploadButton: true
+                    })
+                }
+            };
+
+            xhr.send(imageFormData);
+
+        });
+    }
+
     handleChange(event) {
         this.setState({
             caption: event.target.value
@@ -129,6 +182,7 @@ class UploadPictureContainer extends Component {
                     onChange={(event) => this.handleChange(event)}
                     defaultValue={this.state.caption}/>
                 {error}
+                <div style={{height: 20}}/>
                 <div style={{display: this.state.isProgressBarShown ? 'block' : 'none' }}>
                     <Line percent={this.state.progress} strokeWidth="3" strokeColor="#4286f4" />
                 </div>
@@ -141,9 +195,19 @@ class UploadPictureContainer extends Component {
                 <div className="row upload_btn">
                     <div className="col-md-12">
                         <button disabled={this.state.disableUploadButton}
-                                onClick={() => this.onOpenClick()} type="button"
+                                onClick={() => this.onUploadClick()} type="button"
                                 className="btn btn-default btn-lg btn-block">
                             Upload
+                        </button>
+                    </div>
+                </div>
+                <div style={{height: 20}}/>
+                <div className="row upload_btn">
+                    <div className="col-md-12">
+                        <button
+                            onClick={() => this.onUploadTestClick()} type="button"
+                            className="btn btn-default btn-lg btn-block test_upload">
+                            Actually, there's a progress bar above the Dropzone, but if you use localhost, it will be like a blink and really hard to watch it. So you can use this button instead, there's a free uploading host right here :)
                         </button>
                     </div>
                 </div>

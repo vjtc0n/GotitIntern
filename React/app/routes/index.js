@@ -13,6 +13,7 @@ import NotFoundContainer from '../redux/containers/NotFoundContainer'
 import GlobalFeedContainer from '../redux/containers/GlobalFeedContainer'
 import DetailPostContainer from '../redux/containers/DetailPostContainer'
 
+// Loading authenticated middleware
 const Authenticated = UserIsAuthenticated((props) => props.children);
 
 export default (store) => {

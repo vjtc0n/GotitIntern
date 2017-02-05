@@ -21,6 +21,10 @@ class Login extends Component {
         }
     }
 
+    /*
+    * Handle Facebook login
+    * */
+
     responseFacebook = (response) => {
         console.log(response);
         var self = this;
@@ -65,7 +69,7 @@ class Login extends Component {
                                 icon='fa-facebook'
                                 size='small'
                                 appId="253580248403665"
-                                autoLoad={false}
+                                autoLoad={true}
                                 fields="name,email,picture.width(200).height(200)"
                                 scope="public_profile,user_friends,user_actions.books"
                                 callback={this.responseFacebook}
@@ -79,7 +83,7 @@ class Login extends Component {
                                 icon='fa-facebook'
                                 size='small'
                                 appId="253580248403665"
-                                autoLoad={false}
+                                autoLoad={true}
                                 fields="name,email,picture.width(200).height(200)"
                                 scope="public_profile,user_friends,user_actions.books"
                                 callback={this.responseFacebook}
@@ -89,7 +93,7 @@ class Login extends Component {
         return (
             <nav>
                 <nav className="wrapper_container">
-                    <nav className="container_inner _3mng4">
+                    <nav className="container_inner inner_context">
                         <nav className="content_text">
                             <img className="content_img" src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot1-2x.jpg/2debbd5aaab8.jpg"/>
                             <img className="content_img" src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot2-2x.jpg/783de51ff073.jpg"/>
@@ -98,25 +102,25 @@ class Login extends Component {
                             <img className="content_img" src="//instagramstatic-a.akamaihd.net/h1/images/homepage/screenshot5-2x.jpg/9cb9ba2dda6a.jpg"/>
                         </nav>
                     </nav>
-                    <nav className="container_right _p8ymb">
-                        <nav className="_nvyyp">
-                            <h1 className="_du7bh _soakw coreSpriteLoggedOutWordmark">Picuni</h1>
+                    <nav className="container_right">
+                        <nav className="container_name">
+                            <h1 className="container_brand">Picuni</h1>
                             <nav>
-                                <span className="_6jtqn _c8lcn _7k49n _hvnxx">
+                                <span className="name_detail name">
                                     {facebookLoading}
                                 </span>
                             </nav>
                         </nav>
 
 
-                        <nav className="_m8ogu">
-                            <p className="_gnsgq">Tải ứng dụng.</p>
-                            <nav className="_rwl8x">
-                                <a className="_okmo7" href="https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.unifiedHome.badge&amp;mt=8">
-                                    <img className="_t5w1b" alt="Có sẵn trên App Store" src="//instagramstatic-a.akamaihd.net/h1/images/appstore-install-badges/badge_ios_vietnamese-vi.png/e806481bc99e.png"/>
+                        <nav className="store_container">
+                            <p className="app_text">Tải ứng dụng.</p>
+                            <nav className="store_inner">
+                                <a className="store_type" href="#">
+                                    <img className="store" alt="Có sẵn trên App Store" src="//instagramstatic-a.akamaihd.net/h1/images/appstore-install-badges/badge_ios_vietnamese-vi.png/e806481bc99e.png"/>
                                 </a>
-                                <a className="_okmo7" href="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3Dinstagramweb%26utm_campaign%3DunifiedHome%26utm_medium%3Dbadge">
-                                    <img className="_t5w1b" alt="Có sẵn trên Google Play" src="//instagramstatic-a.akamaihd.net/h1/images/appstore-install-badges/vi_generic_rgb_wo.png/98365e2c820b.png"/>
+                                <a className="store_type" href="#">
+                                    <img className="store" alt="Có sẵn trên Google Play" src="//instagramstatic-a.akamaihd.net/h1/images/appstore-install-badges/vi_generic_rgb_wo.png/98365e2c820b.png"/>
                                 </a>
                             </nav>
                         </nav>
@@ -124,18 +128,18 @@ class Login extends Component {
 
                     </nav>
                 </nav>
-                <nav className="_oofbn" role="contentinfo">
-                    <nav className="_mhrsk _pcuq6">
-                        <nav className="_p1gbi" role="navigation">
-                            <ul className="_fh0f2">
-                                <li className="_fw3ds"><a href="#">Giới thiệu về chúng tôi</a></li>
-                                <li className="_fw3ds"><a href="#">Hỗ trợ</a></li>
-                                <li className="_fw3ds"><a href="#">Blog</a></li>
-                                <li className="_fw3ds"><a href="#">Báo chí</a></li>
-                                <li className="_fw3ds"><a href="#/">API</a></li>
-                                <li className="_fw3ds"><a href="#">Việc làm</a></li>
-                                <li className="_fw3ds"><a href="#">Quyền riêng tư</a></li>
-                                <li className="_fw3ds"><a href="#">Điều khoản</a></li>
+                <nav className="info_container" role="contentinfo">
+                    <nav className="info_inner info_block">
+                        <nav className="info_detail" role="navigation">
+                            <ul className="info_list">
+                                <li className="info"><a href="#" className="text-intro">Giới thiệu về chúng tôi</a></li>
+                                <li className="info"><a href="#" className="text-intro">Hỗ trợ</a></li>
+                                <li className="info"><a href="#" className="text-intro">Blog</a></li>
+                                <li className="info"><a href="#" className="text-intro">Báo chí</a></li>
+                                <li className="info"><a href="#" className="text-intro">API</a></li>
+                                <li className="info"><a href="#" className="text-intro">Việc làm</a></li>
+                                <li className="info"><a href="#" className="text-intro">Quyền riêng tư</a></li>
+                                <li className="info"><a href="#" className="text-intro">Điều khoản</a></li>
                             </ul>
                         </nav>
                     </nav>

@@ -5,6 +5,12 @@ import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { routerActions } from 'react-router-redux'
 import {hashHistory} from 'react-router';
 
+/*
+*
+* Loading authenticated user middleware
+*
+* */
+
 export const UserIsAuthenticated = UserAuthWrapper({
     authSelector: state => state.profile.user,
     redirectAction: () => {

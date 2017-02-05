@@ -2,6 +2,12 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 module.exports = function(accessToken) {
+
+  /*
+  * Save access token from server
+  * Before it, check the Facebook access token again
+  * */
+
   accessToken.createToken = function (data, cb) {
     fetch('https://graph.facebook.com/app?access_token=' + data.id)
       .then(function(response) {

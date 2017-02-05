@@ -34,6 +34,10 @@ class MainContainer extends Component {
         })
     }
 
+    /*
+    * Logout from Facebook, as well as deleting accessToken from Loopback server
+    * */
+
     logout(accessToken) {
         let self = this
         console.log("LOGOUT FB")
@@ -80,7 +84,7 @@ class MainContainer extends Component {
                         <div className="mdl-collapse">
                             <a
                                 onClick={() => this.logout(this.props.profile.accessToken.id)}
-                                className="mdl-navigation__link mdl-collapse__button">
+                                className="mdl-navigation__link animsition-link">
                                 <FontAwesome name='mail-reply' size="2x" />
                                 <span className="menu-text">Logout</span>
                             </a>

@@ -36,10 +36,10 @@
     float: left;
 }
 .user1 {
-	background-image: url('../img/user.jpg');
+
 }
 .user2 {
-	background-image: url('../img/sub-user.jpg');
+
 }
 
 /* BASE ELEMENTS AND LAYOUT */
@@ -393,7 +393,6 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 
 /* HOME */
 .launch {
-	background: url(../img/home.jpg) center / cover;
 	height: 100vh;
 	text-align: center;
 }
@@ -507,7 +506,6 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 	border-radius: 2px;
 }
 .article-bg {
-	background: url(../img/9.jpg) center / cover;
 	height: 250px;
 	width: 100vw;
 }
@@ -727,7 +725,6 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 	color: #ffffff;
 	font-size: 12px;
 	font-weight: 100;
-	background: url(../img/2.jpg);
 	position: relative;
 }
 .mdl-card.weather > span {
@@ -771,7 +768,7 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 
 /* LOGIN */
 .login-bg {
-	background: url(../img/10_blur.jpg) center / cover;
+
 	height: 100vh;
 	overflow: hidden;
 	padding: 0 16px;
@@ -1087,4 +1084,8 @@ thead, tbody, .mdl-data-table__cell--non-numeric {
 	width: calc(100% - 4px);
 }
 
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+	height: 50px;
 }

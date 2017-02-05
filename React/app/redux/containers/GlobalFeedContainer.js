@@ -20,6 +20,10 @@ class GlobalFeedContainer extends Component {
         }
     }
 
+    /*
+    * Loading new data of first 10 posts of all users
+    * */
+
     componentDidMount() {
         this.getFeed(this.state.limit)
     }
@@ -33,6 +37,10 @@ class GlobalFeedContainer extends Component {
                 })
             })
     }
+
+    /*
+    * Handle pull to refresh
+    * */
 
     handleRefresh(resolve, reject) {
         this.setState({
@@ -48,6 +56,10 @@ class GlobalFeedContainer extends Component {
                 })
         })
     }
+
+    /*
+    * Handle press event from a post, will redirect to DetailPost
+    * */
 
     onPostPress(item, event) {
         event.preventDefault();

@@ -3,6 +3,14 @@ import _ from 'underscore';
 import * as config from './config'
 var baseUrl = config.baseUrl;
 
+/*
+* Save Facebook access token to Loopback server
+* data: {
+*   id: Facebook access token
+*   ttl: time to live (expiry time of access token)
+*   userId: ID of Facebook user
+* }
+* */
 export  async function setFacebookTokenToServer(data) {
     return await this._fetch({
         method: 'POST',
@@ -20,6 +28,16 @@ export  async function setFacebookTokenToServer(data) {
             throw (error)
         })
 }
+
+/*
+ * Save Facebook profile to Loopback server
+ * data: {
+ *   userId: Facebook user ID
+ *   email: user email
+ *   username: Facebook username
+ *   avatar_picture: Facebook avatar
+ * }
+ * */
 
 export  async function saveProfileToServer(userID, data, accessToken) {
     return await this._fetch({
@@ -39,6 +57,11 @@ export  async function saveProfileToServer(userID, data, accessToken) {
         })
 }
 
+/*
+ * Check user exist or not
+ * id: Facebook userId
+ * */
+
 export  async function checkUserExist(id) {
     return await this._fetch({
         method: 'GET',
@@ -55,6 +78,17 @@ export  async function checkUserExist(id) {
             throw (error)
         })
 }
+
+/*
+ * Insert Facebook profile to Loopback server
+ * data: {
+ *   userId: Facebook user ID
+ *   email: user email
+ *   username: Facebook username
+ *   avatar_picture: Facebook avatar
+ *   password: first 12 characters of the access token
+ * }
+ * */
 
 export  async function insertProfileToServer(data) {
     return await this._fetch({
@@ -74,6 +108,15 @@ export  async function insertProfileToServer(data) {
         })
 }
 
+/*
+* Get GlobalFeed with 10 newest posts
+* filter:
+* {
+*   limit: the number of posts
+*   order: [created-time] sort the post's time
+*   include: [user] the user who created the post
+* }
+* */
 
 export  async function getPosts(accessToken, limit) {
     return await this._fetch({
@@ -92,6 +135,11 @@ export  async function getPosts(accessToken, limit) {
         })
 }
 
+/*
+* Get more detail of a post
+* postId: the id of the post
+* */
+
 export  async function getDetailPost(postId) {
     return await this._fetch({
         method: 'GET',
@@ -108,6 +156,18 @@ export  async function getDetailPost(postId) {
             throw (error)
         })
 }
+
+/*
+ * Insert new post to Loopback server
+ * data: {
+ *   userId: Facebook user ID
+ *   imgUrl: image url from Loopback server
+ *   extension: type of the image
+ *   size: size of an image (MB)
+ *   caption: caption of a post
+ * }
+ * accessToken: Facebook access token, to validate from Loopback server
+ * */
 
 export  async function savePost(data, accessToken) {
     return await this._fetch({

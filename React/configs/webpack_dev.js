@@ -1,4 +1,4 @@
 module.exports = {
-    domain: '0.0.0.0',
+    domain: 'localhost',
     port: '3111'
 }
