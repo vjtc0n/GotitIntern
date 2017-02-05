@@ -6,7 +6,7 @@ It covers most of the required parts from Mr.Le
 ## Unfinished part
  Sliding effect between GlobalFeed and DetailPost
  - I' ve tried "pure" javascript, but not succeeded.
- - I' ve also did a middleware of react-router-transitions, but it's not working right now,
+ - I also did a middleware of react-router-transitions, but it's not working right now,
  the example could be found here: http://doctolib.github.io/react-router-transitions/#/?_k=oayfnt
  
 ## Found Issues
