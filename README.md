@@ -25,6 +25,9 @@ please tell me, thank you.
 ## Setup the system
 
 - Server:
+    + Go to *./Server/server* then create folders:
+     
+        *./storage/container1*
     
     + Go to *./Server* then:
         ```
