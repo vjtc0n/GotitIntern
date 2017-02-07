@@ -8,46 +8,30 @@
   },
   "properties": {
     "postId": {
-      "type": "number",
+      "type": "string",
       "id": true,
       "generated": true
     },
     "imgUrl": {
       "type": "string",
-      "required" : true
+      "required": true
     },
     "extension": {
       "type": "string",
-      "required" : true
+      "required": true
     },
     "size": {
       "type": "string",
-      "required" : true,
-      "mysql":
-      {
-        "columnName":"size",
-        "dataType":"VARCHAR",
-        "dataLength": 10
-      }
+      "required": true
     },
     "caption": {
       "type": "string",
-      "required" : true
+      "required": true
     },
     "created_time": {
       "type": "date",
-      "required" : true,
-      "default" : "$now"
-    },
-    "userId": {
-      "type": "number",
-      "length": 20,
-      "mysql":
-      {
-        "columnName":"userId",
-        "dataType":"BIGINT",
-        "dataLength":20
-      }
+      "required": true,
+      "default": "$now"
     }
   },
   "validations": [],
@@ -56,6 +40,16 @@
       "type": "belongsTo",
       "model": "Member",
       "foreignKey": "userId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "postId"
+    },
+    "postCaptions": {
+      "type": "hasMany",
+      "model": "PostCaption",
+      "foreignKey": "postId"
     }
   },
   "acls": [

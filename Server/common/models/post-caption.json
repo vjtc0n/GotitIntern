@@ -1,0 +1,35 @@
+{
+  "name": "PostCaption",
+  "plural": "postcaptions",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "postCaptionId": {
+      "type": "string",
+      "id": true,
+      "generated": true,
+      "index": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "postId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "post": {
+      "type": "belongsTo",
+      "model": "Post",
+      "foreignKey": "postId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

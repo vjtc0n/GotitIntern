@@ -6,6 +6,7 @@ var faker = require('faker');
 
 var posts1 = [];
 var posts2 =[];
+var comments1 = [];
 
 for (var i = 0; i < 20; i++) {
   posts1.push({
@@ -22,6 +23,12 @@ for (var i = 0; i < 20; i++) {
     caption: "ABCDEF",
     size: 3,
     imgUrl: "http://img.k13cdn.net/f/2013/08/bai-kiem-tra-hoc-sinh-08082013.jpg"
+  })
+}
+
+for (var i = 0; i < 2; i++) {
+  comments1.push({
+    content: "ABCDEF"
   })
 }
 
@@ -48,8 +55,11 @@ module.exports = function(app) {
     var dataLength = Object.keys(models).length;
     var i = 0;
     Object.keys(models).forEach(function(key) {
+      //console.log(models[key].dataSource)
+
       if (typeof models[key].dataSource != 'undefined') {
         if (typeof datasources[models[key].dataSource] != 'undefined') {
+          console.log(models[key].dataSource)
           app.dataSources[models[key].dataSource].automigrate(key, function (err) {
             if (err) throw err;
             console.log('Model ' + key + ' migrated');
@@ -83,6 +93,10 @@ module.exports = function(app) {
       });
 
       users[1].posts.create(posts2, function (err, posts) {
+        if (err) throw err;
+      });
+
+      users[0].comments.create(comments1, function (err, comments) {
         if (err) throw err;
       });
 

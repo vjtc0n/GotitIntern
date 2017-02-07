@@ -42,7 +42,15 @@
     "public": true
   },
   "Post": {
-    "dataSource": "Picuni",
+    "dataSource": "PicuniMongo",
+    "public": true
+  },
+  "Comment": {
+    "dataSource": "PicuniRedis",
+    "public": true
+  },
+  "PostCaption": {
+    "dataSource": "PicuniES",
     "public": true
   }
 }

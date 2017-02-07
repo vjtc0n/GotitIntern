@@ -10,12 +10,11 @@
       "type": "number",
       "id": true,
       "generated": false,
-      "required":false,
-      "mysql":
-      {
-        "columnName":"userId",
-        "dataType":"BIGINT",
-        "dataLength":20
+      "required": false,
+      "mysql": {
+        "columnName": "userId",
+        "dataType": "BIGINT",
+        "dataLength": 20
       }
     },
     "avatar_picture": {
@@ -41,6 +40,11 @@
     "posts": {
       "type": "hasMany",
       "model": "Post",
+      "foreignKey": "userId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
       "foreignKey": "userId"
     }
   },

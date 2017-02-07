@@ -3,6 +3,17 @@
 This is the result of my work during Tet holiday.
 It covers most of the required parts from Mr.Le
 
+## Updated server
+ 
+ Warning: Don't use redis! It has some bugs, of course I added some fixed code 
+ inside connector-redis (in node_modules) due to the issues from github, but it's not stable for only
+ using :
+  
+  *npm install*
+  
+  If you want to use redis, contact me for the fast fixed code, or you could try
+  a little bit on official github of loopback-connector-redis.
+
 ## Unfinished part
  Sliding effect between GlobalFeed and DetailPost
  - I' ve tried "pure" javascript, but not succeeded.

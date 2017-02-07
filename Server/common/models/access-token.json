@@ -10,11 +10,10 @@
     "userId": {
       "type": "number",
       "length": 20,
-      "mysql":
-      {
-        "columnName":"userId",
-        "dataType":"BIGINT",
-        "dataLength":20
+      "mysql": {
+        "columnName": "userId",
+        "dataType": "BIGINT",
+        "dataLength": 20
       }
     }
   },
@@ -30,7 +29,7 @@
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY",
+      "permission": "ALLOW",
       "property": "create"
     },
     {
@@ -39,6 +38,11 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "createToken"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
