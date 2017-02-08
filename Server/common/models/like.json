@@ -1,31 +1,24 @@
 {
-  "name": "Comment",
-  "plural": "comments",
+  "name": "Like",
+  "plural": "likes",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "content": {
-      "type": "string"
-    },
-    "created_time": {
-      "type": "date",
-      "default": "$now"
+    "userId": {
+      "type": "number",
+      "index": true
     },
     "postId": {
       "type": "string",
-      "index": true
-    },
-    "userId": {
-      "type": "number",
       "index": true
     }
   },
   "validations": [],
   "relations": {
-    "user": {
+    "member": {
       "type": "belongsTo",
       "model": "Member",
       "foreignKey": "userId"
@@ -40,8 +33,8 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "DENY"
+      "principalId": "$everyone",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

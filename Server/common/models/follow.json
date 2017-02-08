@@ -1,47 +1,40 @@
 {
-  "name": "Comment",
-  "plural": "comments",
+  "name": "Follow",
+  "plural": "follows",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "content": {
-      "type": "string"
-    },
-    "created_time": {
-      "type": "date",
-      "default": "$now"
-    },
-    "postId": {
-      "type": "string",
+    "user1Id": {
+      "type": "number",
       "index": true
     },
-    "userId": {
+    "user2Id": {
       "type": "number",
       "index": true
     }
   },
   "validations": [],
   "relations": {
-    "user": {
+    "follower": {
       "type": "belongsTo",
       "model": "Member",
-      "foreignKey": "userId"
+      "foreignKey": "user1Id"
     },
-    "post": {
+    "followee": {
       "type": "belongsTo",
-      "model": "Post",
-      "foreignKey": "postId"
+      "model": "Member",
+      "foreignKey": "user2Id"
     }
   },
   "acls": [
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "DENY"
+      "principalId": "$everyone",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

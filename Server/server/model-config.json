@@ -46,11 +46,19 @@
     "public": true
   },
   "Comment": {
-    "dataSource": "PicuniRedis",
+    "dataSource": "PicuniMongo",
     "public": true
   },
   "PostCaption": {
     "dataSource": "PicuniES",
+    "public": true
+  },
+  "Follow": {
+    "dataSource": "PicuniRedis",
+    "public": true
+  },
+  "Like": {
+    "dataSource": "PicuniRedis",
     "public": true
   }
 }

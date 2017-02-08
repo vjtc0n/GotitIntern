@@ -46,6 +46,21 @@
       "type": "hasMany",
       "model": "Comment",
       "foreignKey": "userId"
+    },
+    "followings": {
+      "type": "hasMany",
+      "model": "Follow",
+      "foreignKey": "user1Id"
+    },
+    "followeds": {
+      "type": "hasMany",
+      "model": "Follow",
+      "foreignKey": "user2Id"
+    },
+    "likes": {
+      "type": "hasMany",
+      "model": "Like",
+      "foreignKey": "userId"
     }
   },
   "acls": [

@@ -43,7 +43,10 @@
     "connector": "es",
     "index": "postcaption",
     "hosts": [
-      {"host": "localhost", "port": 9200}
+      {
+        "host": "localhost",
+        "port": 9200
+      }
     ],
     "apiVersion": "2.3",
     "log": "trace",
