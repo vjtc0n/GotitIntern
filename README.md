@@ -1,7 +1,5 @@
-# GotitIntern
-
+# Picuni
 This is the result of my work during Tet holiday.
-It covers most of the required parts from Mr.Le
 
 ## Updated server
  
